@@ -42,6 +42,13 @@ Vagrant.configure("2") do |config|
         v.memory = boxconfig[:memory]
         v.cpus = boxconfig[:cpus]
       end
+      config.vm.provision "shell", inline: <<-SHELL
+        sudo yum install -y http://www.elrepo.org/elrepo-release-7.0-3.el7.elrepo.noarch.rpm
+        sudo yum --enablerepo elrepo-kernel install kernel-ml -y
+        sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+        sudo grub2-set-default 0
+        sudo reboot
+      SHELL
     end
   end
 end
