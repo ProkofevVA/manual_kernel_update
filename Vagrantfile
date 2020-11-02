@@ -1,7 +1,7 @@
 # Describe VMs
 MACHINES = {
   # VM name "kernel update"
-  :"kernel-update" => {
+              :"kernel-update" => {
               # VM box
               :box_name => "centos/7",
               # VM CPU count
